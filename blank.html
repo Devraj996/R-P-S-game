@@ -9,17 +9,13 @@
       let userInput ;
       let computersPick; 
       let userScore = 0;
-      console.log(userScore);
       let computerScore = 0;
      function computerPlay(a){
          if (a === 0) {
-             console.log("rock");
              computersPick = "rock";
          } else if (a === 1) {
-             console.log("paper");
              computersPick = "paper";
          } else {
-             console.log("scissor");
              computersPick = "scissor";
          }
      }
@@ -50,20 +46,30 @@
         } else if (playerSelection === "scissor" && computerSelection === "scissor") {
             console.log("Its a draw.Both chose scissor");
         } else {
-            console.log("please input a valid word (rock,paper or scissor)");
+            console.log("This round is a draw as your input was different from the desired.Please input a valid word (rock,paper or scissor)");
         }
      }
      function game() {
         for (let i = 0; i < 5; i++){
-            userInput = window.prompt("to play write either rock/paper/scissor.");
+            userInput = window.prompt("ROCK PAPER SCISSOR! . To play against computer write either rock/paper/scissor.");
             userInput = userInput.toLowerCase();
             let randomNumberInt = Math.floor(Math.random() * 3);
             computerPlay(randomNumberInt);
-            playArea(userInput,computersPick);
             console.log(`round ${i+1}.`);
+            playArea(userInput,computersPick);
         }
      }
-     game();
+     function result() {
+         game();
+         if (userScore < computerScore) {
+             console.log(`after 5 rounds you lose to computer.Final result-- You(${userScore}) Computer(${computerScore}).`); 
+         } else if (userScore > computerScore) {
+             console.log(`after 5 rounds you are the winner! Your score-(${userScore}), Computers score-(${computerScore}).`);
+         } else {
+             console.log(`after 5 rounds the match results in a draw.Your score-(${userScore}), Computers score-(${computerScore}).`);
+         }
+     }
+     result ();
   </script>
 </body>
 </html>
