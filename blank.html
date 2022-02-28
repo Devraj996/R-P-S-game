@@ -1,3 +1,22 @@
-<script>
-    
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+     function computerPlay(a){
+         if (a === 0) {
+             console.log("rock");
+         } else if (a === 1) {
+             console.log("paper");
+         } else {
+             console.log("scissor");
+         }
+     }
+     let randomNumberInt = Math.floor(Math.random() * 3);
+     computerPlay(randomNumberInt);
+  </script>
+</body>
+</html>
