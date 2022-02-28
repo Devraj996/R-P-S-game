@@ -6,9 +6,11 @@
 </head>
 <body>
   <script>
-      let userInput = window.prompt("To play the game enter rock/paper/scissor");
-      userInput = userInput.toLowerCase();
-      let computersPick
+      let userInput ;
+      let computersPick; 
+      let userScore = 0;
+      console.log(userScore);
+      let computerScore = 0;
      function computerPlay(a){
          if (a === 0) {
              console.log("rock");
@@ -21,32 +23,47 @@
              computersPick = "scissor";
          }
      }
-     let randomNumberInt = Math.floor(Math.random() * 3);
-     computerPlay(randomNumberInt);
      function playArea(playerSelection,computerSelection) {
-         if (playerSelection === "rock" && computerSelection === "rock") {
+        console.log(`You chose ${playerSelection} .Computer chose ${computerSelection}.`);
+        if (playerSelection === "rock" && computerSelection === "rock") {
              console.log("Its a draw.Both chose rock");
-         } else if (playerSelection === "rock" && computerSelection === "paper") {
+        } else if (playerSelection === "rock" && computerSelection === "paper") {
              console.log("You lose! paper beats rock");
-         } else if (playerSelection === "rock" && computerSelection === "scissor") {
-             console.log("You win! rock beats scissor");
-         } else if (playerSelection === "paper" && computerSelection === "rock") {
-             console.log("You win! paper beats rock");
-         } else if (playerSelection === "paper" && computerSelection === "paper") {
-             console.log("Its a draw.Both chose paper");
-         } else if (playerSelection === "paper" && computerSelection === "scissor") {
-             console.log("You lose! scissor beats paper");
-         } else if (playerSelection === "scissor" && computerSelection === "paper") {
-             console.log("You win! scissor beats paper");
-         } else if (playerSelection === "scissor" && computerSelection === "rock") {
-             console.log("You lose! rock beats scissor");           
-         } else if (playerSelection === "scissor" && computerSelection === "scissor") {
-             console.log("Its a draw.Both chose scissor");
-         } else {
-             console.log("please input a valid word (rock,paper or scissor)");
-         }
+             computerScore += 1;
+        } else if (playerSelection === "rock" && computerSelection === "scissor") {
+            console.log("You win! rock beats scissor");
+            userScore += 1;
+        } else if (playerSelection === "paper" && computerSelection === "rock") {
+            console.log("You win! paper beats rock");
+            userScore += 1;
+        } else if (playerSelection === "paper" && computerSelection === "paper") {
+            console.log("Its a draw.Both chose paper");
+        } else if (playerSelection === "paper" && computerSelection === "scissor") {
+            console.log("You lose! scissor beats paper");
+            computerScore += 1;
+        } else if (playerSelection === "scissor" && computerSelection === "paper") {
+            console.log("You win! scissor beats paper");
+            userScore += 1;
+        } else if (playerSelection === "scissor" && computerSelection === "rock") {
+            console.log("You lose! rock beats scissor");
+            computerScore +=1;           
+        } else if (playerSelection === "scissor" && computerSelection === "scissor") {
+            console.log("Its a draw.Both chose scissor");
+        } else {
+            console.log("please input a valid word (rock,paper or scissor)");
+        }
      }
-     playArea(userInput,computersPick);
+     function game() {
+        for (let i = 0; i < 5; i++){
+            userInput = window.prompt("to play write either rock/paper/scissor.");
+            userInput = userInput.toLowerCase();
+            let randomNumberInt = Math.floor(Math.random() * 3);
+            computerPlay(randomNumberInt);
+            playArea(userInput,computersPick);
+            console.log(`round ${i+1}.`);
+        }
+     }
+     game();
   </script>
 </body>
 </html>
