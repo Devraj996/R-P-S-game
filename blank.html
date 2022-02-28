@@ -6,17 +6,47 @@
 </head>
 <body>
   <script>
+      let userInput = window.prompt("To play the game enter rock/paper/scissor");
+      userInput = userInput.toLowerCase();
+      let computersPick
      function computerPlay(a){
          if (a === 0) {
              console.log("rock");
+             computersPick = "rock";
          } else if (a === 1) {
              console.log("paper");
+             computersPick = "paper";
          } else {
              console.log("scissor");
+             computersPick = "scissor";
          }
      }
      let randomNumberInt = Math.floor(Math.random() * 3);
      computerPlay(randomNumberInt);
+     function playArea(playerSelection,computerSelection) {
+         if (playerSelection === "rock" && computerSelection === "rock") {
+             console.log("Its a draw.Both chose rock");
+         } else if (playerSelection === "rock" && computerSelection === "paper") {
+             console.log("You lose! paper beats rock");
+         } else if (playerSelection === "rock" && computerSelection === "scissor") {
+             console.log("You win! rock beats scissor");
+         } else if (playerSelection === "paper" && computerSelection === "rock") {
+             console.log("You win! paper beats rock");
+         } else if (playerSelection === "paper" && computerSelection === "paper") {
+             console.log("Its a draw.Both chose paper");
+         } else if (playerSelection === "paper" && computerSelection === "scissor") {
+             console.log("You lose! scissor beats paper");
+         } else if (playerSelection === "scissor" && computerSelection === "paper") {
+             console.log("You win! scissor beats paper");
+         } else if (playerSelection === "scissor" && computerSelection === "rock") {
+             console.log("You lose! rock beats scissor");           
+         } else if (playerSelection === "scissor" && computerSelection === "scissor") {
+             console.log("Its a draw.Both chose scissor");
+         } else {
+             console.log("please input a valid word (rock,paper or scissor)");
+         }
+     }
+     playArea(userInput,computersPick);
   </script>
 </body>
 </html>
